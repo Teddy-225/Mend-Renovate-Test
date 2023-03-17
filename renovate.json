@@ -2,5 +2,43 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base"
+  ],
+  "packageRules": [
+    {
+      "description": "Automatically merge minor and patch-level updates",
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "digest"
+      ],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "automerge": true,
+      "extends": [
+        "schedule:earlyMondays"
+      ],
+      "labels": [
+        "dependencies"
+      ]
+    },
+    {
+      "description": "Create PR for major and breaking updates",
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "schedule": [
+        "before 10am on the first day of the month"
+      ],
+      "labels": [
+        "dependencies",
+        "breaking"
+      ]
+    }
   ]
 }
