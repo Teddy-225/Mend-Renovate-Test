@@ -32,9 +32,6 @@
       "matchUpdateTypes": [
         "major"
       ],
-      "schedule": [
-        "before 10am on the first day of the month"
-      ],
       "labels": [
         "dependencies",
         "breaking"
